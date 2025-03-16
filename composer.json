@@ -1,0 +1,10 @@
+{
+    "name": "johnk/plugin",
+    "authors": [
+        {
+            "name": "John Kawakami",
+            "email": "johnkawakami@hotmail.com"
+        }
+    ],
+    "require": {}
+}
