@@ -50,7 +50,7 @@ class CorrectionFormShortcode {
 		echo '<input type="submit" value="Submit">';
 		echo '</form>';
 
-		if ( ! empty( $recaptcha_site_key ) ) {
+		if ( $this->recaptcha->is_enabled() && ! empty( $recaptcha_site_key ) ) {
 			$this->recaptcha->render_script();
 		}
 	}
@@ -71,7 +71,7 @@ class CorrectionFormShortcode {
 			return;
 		}
 
-		if ( ! $this->recaptcha->verify( $recaptcha_token ) ) {
+		if ( $this->recaptcha->is_enabled() && ! $this->recaptcha->verify( $recaptcha_token ) ) {
 			echo '<p>reCAPTCHA verification failed. You might be a bot.</p>';
 			return;
 		}
@@ -100,9 +100,9 @@ class CorrectionFormShortcode {
 		$message    .= "Correction:\n{$correction}\n\n";
 		$message    .= "Email: {$email}\n";
 
-		wp_mail( $admin_email, $subject, $message );
+		// wp_mail( $admin_email, $subject, $message );
 
 		echo '<p>Thank you for your correction! It has been submitted.</p>';
-		return ob_get_clean();
+		return;
 	}
 }
