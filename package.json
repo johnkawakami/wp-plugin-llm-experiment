@@ -1,0 +1,16 @@
+{
+  "name": "plugin",
+  "version": "1.0.0",
+  "description": "I'm going to restructure the directories as per this: https://i-wp-dev.com/how-to-use-composer-autoload-for-the-wordpress/",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^30.13.0"
+  }
+}

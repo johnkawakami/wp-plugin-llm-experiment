@@ -12,7 +12,7 @@
     "scripts": {
         "cleanup": [
             "find . -type f -name '*~' -delete",
-            "phpcbf --standard=WordPress --extensions=php --ignore=vendor ."
+            "phpcbf --standard=WordPress --extensions=php --ignore=vendor --ignore=node_modules ."
         ]
     },
     "autoload": {

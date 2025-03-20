@@ -10,6 +10,12 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+/*
+ * Useful constants.
+ */
+
+define( 'CORRECTION_PLUGIN_FILE', __FILE__ );
+
 /**
  * Admin notice error shown when permalinks are off.
  */
@@ -33,6 +39,10 @@ function correction_init() {
 	$recaptcha                 = new JTK\ReCaptcha();
 	$correction_link_shortcode = new JTK\Correction\CorrectionLinkShortcode();
 	$correction_form_shortcode = new JTK\Correction\CorrectionFormShortcode( $recaptcha );
+    $correction_block          = new JTK\Correction\CorrectionBlock();
+
+    $correction_block->register();
+    //add_action( 'init', [$correction_block, 'register']);
 
 	add_shortcode( 'correction_link', array( $correction_link_shortcode, 'render' ) );
 	add_shortcode( 'correction_form', array( $correction_form_shortcode, 'render' ) );
