@@ -123,17 +123,18 @@ class CorrectionAdmin extends AbstractAdmin {
 	/**
 	 * Handle delete actions.
 	 */
-	function handle_actions() {
-		if ( isset( $_GET['action'] ) && 'delete_correction ' === $_GET['action'] && isset( $_GET['correction_id'] ) ) {
-			$correction_id = intval( $_GET['correction_id'] );
+	public function handle_actions( ) {
+        if ( isset( $_GET['action'] ) && ( 'delete_correction' == $_GET['action'] ) ) { 
+            if ( isset( $_GET['correction_id'] ) ) {
+                $correction_id = intval( $_GET['correction_id'] );
+                if ( $correction_id ) {
+                    $result = wp_delete_post( $correction_id, true ); // true = force delete.
 
-			if ( $correction_id ) {
-				wp_delete_post( $correction_id, true ); // true = force delete.
-
-				// Redirect back to the corrections admin page.
-				wp_safe_redirect( admin_url( 'admin.php?page=correction' ) ); // Ensure to use admin.php?page=correction for menu slug.
-				exit();
-			}
+                    // Redirect back to the corrections admin page.
+                    wp_safe_redirect( admin_url( 'admin.php?page=correction' ) ); // Ensure to use admin.php?page=correction for menu slug.
+                    exit();
+                }
+            }
 		}
 	}
 }
